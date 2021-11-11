@@ -1,12 +1,11 @@
 import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { useState } from 'react';
 
-const DocumentForm = ({ items, setItems, id }) => {
+const DocumentForm = ({ items, setItems }) => {
   const defaultInfo = {
     name: '',
     type: '',
     description: '',
-    id: id + 1,
     active: true,
   };
 
@@ -35,6 +34,7 @@ const DocumentForm = ({ items, setItems, id }) => {
     }
 
     setItems([...items, itemInfo]);
+    setItemInfo(defaultInfo);
   };
 
   return (
