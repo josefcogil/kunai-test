@@ -15,9 +15,9 @@ const DocumentForm = () => {
             <Form.Label>Tipo de documento</Form.Label>
             <Form.Select aria-label="Default select example" className="mb-3">
               <option>Seleccione el tipo de documento...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="1">Anexo</option>
+              <option value="2">PDF</option>
+              <option value="3">Excel</option>
             </Form.Select>
           </Col>
         </Row>
