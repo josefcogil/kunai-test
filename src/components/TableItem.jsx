@@ -1,6 +1,8 @@
 import { Form, Row, Col } from 'react-bootstrap';
 
-const TableItem = ({ item, statusChange, view }) => {
+const TableItem = (props) => {
+  const { item, statusChange, view, edit } = props;
+
   return (
     <>
       <tr>
@@ -45,6 +47,7 @@ const TableItem = ({ item, statusChange, view }) => {
               <i
                 className="fa fa-pencil fa-sm text-primary"
                 style={{ cursor: 'pointer' }}
+                onClick={() => edit(item.id)}
               >
                 e
               </i>
