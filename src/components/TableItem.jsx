@@ -2,18 +2,17 @@ import { Form, Row, Col } from 'react-bootstrap';
 
 const TableItem = ({ item }) => (
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>{item.id}</td>
+    <td>{item.type}</td>
+    <td>{item.name}</td>
+    <td>{item.description}</td>
     <td>
       <Row>
         <Col>
           <Form.Check
             inline
             label="Si"
-            name="active"
-            checked={null}
+            checked={item.active ? true : false}
             type="radio"
           />
         </Col>
@@ -21,8 +20,7 @@ const TableItem = ({ item }) => (
           <Form.Check
             inline
             label="No"
-            name="active"
-            checked={null}
+            checked={item.active ? false : true}
             type="radio"
           />
         </Col>

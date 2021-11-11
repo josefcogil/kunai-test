@@ -3,6 +3,30 @@ import DocumentForm from './components/DocumentForm';
 import DocumentTable from './components/DocumentTable';
 
 const App = () => {
+  let items = [
+    {
+      id: 1,
+      name: 'Anexo 1',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      type: 'Anexo',
+      active: true,
+    },
+    {
+      id: 2,
+      name: 'PDF 1',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      type: 'PDF',
+      active: true,
+    },
+    {
+      id: 3,
+      name: 'Excel 1',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      type: 'Excel',
+      active: false,
+    },
+  ];
+
   return (
     <Container className="py-4">
       <Card>
@@ -22,7 +46,7 @@ const App = () => {
               <Card.Subtitle>
                 <h5>Documentación generales asociados</h5>
               </Card.Subtitle>
-              <DocumentTable />
+              <DocumentTable items={items} />
             </Col>
           </Row>
         </Card.Body>
