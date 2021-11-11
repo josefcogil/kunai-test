@@ -1,8 +1,9 @@
 import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { useState } from 'react';
 
-const DocumentForm = ({ items, setItems }) => {
-  const defaultInfo = {
+const DocumentForm = ({ items, setItems, id }) => {
+  let defaultInfo = {
+    id,
     name: '',
     type: '',
     description: '',
@@ -34,6 +35,7 @@ const DocumentForm = ({ items, setItems }) => {
     }
 
     setItems([...items, itemInfo]);
+    defaultInfo.id++;
     setItemInfo(defaultInfo);
   };
 

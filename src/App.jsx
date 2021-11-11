@@ -6,21 +6,21 @@ import { useState } from 'react';
 const App = () => {
   let defaultItems = [
     {
-      //id: 1,
+      id: 1,
       name: 'Anexo 1',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
       type: 'Anexo',
       active: true,
     },
     {
-      //id: 2,
+      id: 2,
       name: 'PDF 1',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
       type: 'PDF',
       active: true,
     },
     {
-      //id: 3,
+      id: 3,
       name: 'Excel 1',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
       type: 'Excel',
@@ -44,7 +44,7 @@ const App = () => {
               <DocumentForm
                 items={items}
                 setItems={setItems}
-                //id={items.length}
+                id={items.length + 1}
               />
             </Col>
           </Row>

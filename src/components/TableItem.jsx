@@ -2,6 +2,7 @@ import { Form, Row, Col } from 'react-bootstrap';
 
 const TableItem = ({ item }) => (
   <tr>
+    <td>{item.id}</td>
     <td>{item.type}</td>
     <td>{item.name}</td>
     <td>{item.description}</td>
