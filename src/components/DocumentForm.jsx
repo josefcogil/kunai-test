@@ -72,7 +72,7 @@ const DocumentForm = ({ items, setItems }) => {
               value={itemInfo.type}
               onChange={handleChange}
             >
-              <option>Seleccione el tipo de documento...</option>
+              <option value="">Seleccione el tipo de documento...</option>
               <option value="Anexo">Anexo</option>
               <option value="PDF">PDF</option>
               <option value="Excel">Excel</option>
