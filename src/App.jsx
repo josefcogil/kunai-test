@@ -30,6 +30,13 @@ const App = () => {
 
   const [items, setItems] = useState(defaultItems);
 
+  const statusChange = (id, val) => {
+    let update = items.map((item) =>
+      item.id !== id ? item : { ...item, active: val }
+    );
+    setItems(update);
+  };
+
   return (
     <Container className="py-4">
       <Card>
@@ -53,7 +60,7 @@ const App = () => {
               <Card.Subtitle>
                 <h5>Documentación generales asociados</h5>
               </Card.Subtitle>
-              <DocumentTable items={items} />
+              <DocumentTable items={items} statusChange={statusChange} />
             </Col>
           </Row>
         </Card.Body>

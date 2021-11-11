@@ -1,7 +1,7 @@
 import { Table } from 'react-bootstrap';
 import TableItem from './TableItem';
 
-const DocumentTable = ({ items }) => {
+const DocumentTable = ({ items, statusChange }) => {
   return (
     <>
       <Table striped bordered hover className="mt-3">
@@ -17,7 +17,7 @@ const DocumentTable = ({ items }) => {
         </thead>
         <tbody>
           {items.map((item) => (
-            <TableItem key={item.id} item={item} />
+            <TableItem key={item.id} item={item} statusChange={statusChange} />
           ))}
         </tbody>
       </Table>
