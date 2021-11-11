@@ -1,7 +1,14 @@
 import { Table } from 'react-bootstrap';
 import TableItem from './TableItem';
 
-const DocumentTable = ({ items, statusChange }) => {
+const DocumentTable = (props) => {
+  const { items, statusChange, enableView } = props;
+
+  const view = (id) => {
+    let item = items.filter((item) => item.id === id);
+    enableView(item[0]);
+  };
+
   return (
     <>
       <Table striped bordered hover className="mt-3">
@@ -17,7 +24,12 @@ const DocumentTable = ({ items, statusChange }) => {
         </thead>
         <tbody>
           {items.map((item) => (
-            <TableItem key={item.id} item={item} statusChange={statusChange} />
+            <TableItem
+              key={item.id}
+              item={item}
+              statusChange={statusChange}
+              view={view}
+            />
           ))}
         </tbody>
       </Table>

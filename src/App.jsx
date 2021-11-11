@@ -2,6 +2,7 @@ import { Container, Card, Row, Col } from 'react-bootstrap';
 import DocumentForm from './components/DocumentForm';
 import DocumentTable from './components/DocumentTable';
 import { useState } from 'react';
+import ViewModal from './components/ViewModal';
 
 const App = () => {
   let defaultItems = [
@@ -29,6 +30,7 @@ const App = () => {
   ];
 
   const [items, setItems] = useState(defaultItems);
+  const [viewModal, setViewModal] = useState({ active: false, item: {} });
 
   const statusChange = (id, val) => {
     let update = items.map((item) =>
@@ -37,8 +39,16 @@ const App = () => {
     setItems(update);
   };
 
+  const enableView = (item) => {
+    setViewModal({ active: true, item });
+  };
+
   return (
     <Container className="py-4">
+      {viewModal.active ? (
+        <ViewModal setViewModal={setViewModal} item={viewModal.item} />
+      ) : null}
+
       <Card>
         <Card.Header>
           <h5>
@@ -60,7 +70,11 @@ const App = () => {
               <Card.Subtitle>
                 <h5>Documentación generales asociados</h5>
               </Card.Subtitle>
-              <DocumentTable items={items} statusChange={statusChange} />
+              <DocumentTable
+                items={items}
+                statusChange={statusChange}
+                enableView={enableView}
+              />
             </Col>
           </Row>
         </Card.Body>
