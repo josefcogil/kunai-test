@@ -1,23 +1,81 @@
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
+import { useState } from 'react';
 
-const DocumentForm = () => {
+const DocumentForm = ({ items, setItems, id }) => {
+  const defaultInfo = {
+    name: '',
+    type: '',
+    description: '',
+    id: id + 1,
+    active: true,
+  };
+
+  const [itemInfo, setItemInfo] = useState(defaultInfo);
+  const [error, setError] = useState({ error: false, message: '' });
+
+  const handleChange = (e) => {
+    setItemInfo({
+      ...itemInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (
+      itemInfo.name === '' ||
+      itemInfo.type === '' ||
+      itemInfo.description === ''
+    ) {
+      return setError({
+        error: true,
+        message: '¡Todos los campos son requeridos!',
+      });
+    }
+
+    setItems([...items, itemInfo]);
+  };
+
   return (
     <>
+      {error.error ? (
+        <Alert
+          className="text-center"
+          variant="danger"
+          onClose={() => setError({ error: false, message: '' })}
+          dismissible
+        >
+          <h6>{error.message}</h6>
+        </Alert>
+      ) : null}
+
       <Form>
         <Row>
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Nombre</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control
+                name="name"
+                type="text"
+                value={itemInfo.name}
+                onChange={handleChange}
+              />
             </Form.Group>
           </Col>
           <Col>
             <Form.Label>Tipo de documento</Form.Label>
-            <Form.Select aria-label="Default select example" className="mb-3">
+            <Form.Select
+              name="type"
+              aria-label="Default select example"
+              className="mb-3"
+              value={itemInfo.type}
+              onChange={handleChange}
+            >
               <option>Seleccione el tipo de documento...</option>
-              <option value="1">Anexo</option>
-              <option value="2">PDF</option>
-              <option value="3">Excel</option>
+              <option value="Anexo">Anexo</option>
+              <option value="PDF">PDF</option>
+              <option value="Excel">Excel</option>
             </Form.Select>
           </Col>
         </Row>
@@ -26,7 +84,13 @@ const DocumentForm = () => {
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Descripción</Form.Label>
-              <Form.Control as="textarea" rows={1} />
+              <Form.Control
+                name="description"
+                as="textarea"
+                rows={1}
+                value={itemInfo.description}
+                onChange={handleChange}
+              />
             </Form.Group>
           </Col>
 
@@ -40,7 +104,12 @@ const DocumentForm = () => {
 
         <Row>
           <Col style={{ textAlign: 'right' }}>
-            <Button variant="primary" type="submit" size="md">
+            <Button
+              variant="primary"
+              type="submit"
+              size="md"
+              onClick={handleSubmit}
+            >
               Agregar
             </Button>
           </Col>

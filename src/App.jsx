@@ -41,7 +41,11 @@ const App = () => {
         <Card.Body>
           <Row>
             <Col>
-              <DocumentForm />
+              <DocumentForm
+                items={items}
+                setItems={setItems}
+                id={items.length}
+              />
             </Col>
           </Row>
           <Row>
