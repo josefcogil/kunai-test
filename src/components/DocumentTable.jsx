@@ -2,7 +2,7 @@ import { Table } from 'react-bootstrap';
 import TableItem from './TableItem';
 
 const DocumentTable = (props) => {
-  const { items, statusChange, enableView, enableEdit } = props;
+  const { items, statusChange, enableView, enableEdit, destroy } = props;
 
   const view = (id) => {
     let item = items.filter((item) => item.id === id);
@@ -35,6 +35,7 @@ const DocumentTable = (props) => {
               statusChange={statusChange}
               view={view}
               edit={edit}
+              destroy={destroy}
             />
           ))}
         </tbody>

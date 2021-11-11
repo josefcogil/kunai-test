@@ -1,7 +1,7 @@
 import { Form, Row, Col } from 'react-bootstrap';
 
 const TableItem = (props) => {
-  const { item, statusChange, view, edit } = props;
+  const { item, statusChange, view, edit, destroy } = props;
 
   return (
     <>
@@ -56,6 +56,7 @@ const TableItem = (props) => {
               <i
                 className="fa fa-trash fa-sm text-danger"
                 style={{ cursor: 'pointer' }}
+                onClick={() => destroy(item.id)}
               >
                 d
               </i>

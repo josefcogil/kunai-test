@@ -51,6 +51,11 @@ const App = () => {
     setEditModal({ active: true, item });
   };
 
+  const destroy = (id) => {
+    let filtered = items.filter((item) => item.id !== id);
+    setItems(filtered);
+  };
+
   return (
     <Container className="py-4">
       {viewModal.active ? (
@@ -92,6 +97,7 @@ const App = () => {
                 statusChange={statusChange}
                 enableView={enableView}
                 enableEdit={enableEdit}
+                destroy={destroy}
               />
             </Col>
           </Row>
