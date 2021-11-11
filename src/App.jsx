@@ -1,9 +1,10 @@
 import { Container, Card, Row, Col } from 'react-bootstrap';
 import DocumentForm from './components/DocumentForm';
 import DocumentTable from './components/DocumentTable';
+import { useState } from 'react';
 
 const App = () => {
-  let items = [
+  let defaultItems = [
     {
       id: 1,
       name: 'Anexo 1',
@@ -26,6 +27,8 @@ const App = () => {
       active: false,
     },
   ];
+
+  const [items, setItems] = useState(defaultItems);
 
   return (
     <Container className="py-4">
