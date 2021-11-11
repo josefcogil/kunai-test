@@ -39,27 +39,21 @@ const TableItem = (props) => {
                 className="fa fa-eye fa-sm text-secondary"
                 style={{ cursor: 'pointer' }}
                 onClick={() => view(item.id)}
-              >
-                v
-              </i>
+              ></i>
             </Col>
             <Col>
               <i
                 className="fa fa-pencil fa-sm text-primary"
                 style={{ cursor: 'pointer' }}
                 onClick={() => edit(item.id)}
-              >
-                e
-              </i>
+              ></i>
             </Col>
             <Col>
               <i
                 className="fa fa-trash fa-sm text-danger"
                 style={{ cursor: 'pointer' }}
                 onClick={() => destroy(item.id)}
-              >
-                d
-              </i>
+              ></i>
             </Col>
           </Row>
         </td>
